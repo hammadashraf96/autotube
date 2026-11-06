@@ -31,6 +31,18 @@ figcaption b{display:block;color:var(--fg);font-size:1.05em}
 .sheet{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-top:12px}
 .note{color:var(--muted);font-size:.95em}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:.92em;color:var(--muted)}
+.tabs{display:flex;gap:6px;margin:22px 0 8px;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.panel[hidden]{display:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-size:1.7em;line-height:1.1}
+.stat span{color:var(--muted);font-size:.9em}
+.nums{display:flex;gap:14px;margin:6px 0 10px;color:var(--muted);font-size:.9em}
+.nums b{color:var(--fg)}
+.diagram{display:block;width:100%;height:auto;background:#fff;border-radius:14px;border:1px solid var(--line);padding:10px;margin-top:12px}
+@media (max-width:560px){.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -38,11 +50,24 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 <h1>AutoTube</h1>
 <p class="lead">AutoTube is a private tool its owner uses to make animated explainers and short films and publish them to their own YouTube channels. It is not offered to the public and does not access anyone else's account.</p>
 
+<div class="tabs" role="tablist">
+	<button role="tab" id="t-overview" aria-controls="overview" aria-selected="true">Overview</button>
+	<button role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
+</div>
+
+<section class="panel" id="overview" role="tabpanel" aria-labelledby="t-overview">
+<div class="stats" id="stats" hidden>
+	<div class="stat"><b id="s-videos">–</b><span>public videos</span></div>
+	<div class="stat"><b id="s-views">–</b><span>views</span></div>
+	<div class="stat"><b id="s-subs">–</b><span>subscribers</span></div>
+</div>
+<p class="note" id="s-updated" hidden></p>
+
 <h2>The channels</h2>
 <div class="channels">
-	<div class="channel"><div class="head"><img src="img/logo_minds_sketch.png" alt=""><h3>The Minds Sketch</h3></div><p>Psychology explained in bright, hand-drawn style: why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
-	<div class="channel"><div class="head"><img src="img/logo_coinwise.png" alt=""><h3>Coinwise Sketch</h3></div><p>Everyday money as a story at night: inflation, compound interest, and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
-	<div class="channel"><div class="head"><img src="img/logo_tiny_streak.png" alt=""><h3>Tiny Streak<span class="tag">new</span></h3></div><p>Wordless animated short films about building habits and beating the urges that pull us back: a small character, a day counter, one small step at a time. First film: <a href="https://youtu.be/oStvR1ZWPI0">One Page a Day</a>.</p><a href="https://www.youtube.com/@tinystreak">youtube.com/@tinystreak</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_minds_sketch.png" alt=""><h3>The Minds Sketch</h3></div><div class="nums" data-channel="The Minds Sketch"></div><p>Psychology explained in bright, hand-drawn style: why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_coinwise.png" alt=""><h3>Coinwise Sketch</h3></div><div class="nums" data-channel="Coinwise Sketch"></div><p>Everyday money as a story at night: inflation, compound interest, and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_tiny_streak.png" alt=""><h3>Tiny Streak<span class="tag">new</span></h3></div><div class="nums" data-channel="Tiny Streak"></div><p>Wordless animated short films about building habits and beating the urges that pull us back: a small character, a day counter, one small step at a time. First film: <a href="https://youtu.be/oStvR1ZWPI0">One Page a Day</a>.</p><a href="https://www.youtube.com/@tinystreak">youtube.com/@tinystreak</a></div>
 </div>
 
 <h2>Meet the characters</h2>
@@ -75,7 +100,40 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 <h2>What AutoTube does</h2>
 <p>It uses the YouTube Data API and YouTube Analytics API to upload the owner's videos, set titles, descriptions, captions and thumbnails, and read view statistics for those channels.</p>
 
+</section>
+
+<section class="panel" id="how" role="tabpanel" aria-labelledby="t-how" hidden>
+<h2>How a video is made</h2>
+<p>Every video goes through the same path: a topic, a script and a scene plan that are approved, voices and previews,
+a render that only redoes what changed, and quality checks that must all pass before anything is uploaded. Yellow marks
+a point where the work stops for an approval.</p>
+<img class="diagram" src="img/how-it-works.svg" alt="Flow: channels, how a video starts, write and plan with approval gates, make voices and previews with an approval gate, render in resumable chunks, quality checks in order, then upload per channel, analytics and a learning loop that feeds the next topics">
+</section>
+
 <footer><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a> · Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a></footer>
 </main>
+<script>
+// tabs (remembers the last one in the address bar: #how)
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function show(id) {
+	tabs.forEach((t) => { const on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
+}
+tabs.forEach((t) => t.addEventListener('click', () => { show(t.getAttribute('aria-controls')); history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }));
+if (location.hash === '#how') show('how');
+// channel stats (stats.json, refreshed nightly by tools/site.py)
+fetch('stats.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
+	if (!d) return;
+	const n = (x) => Number(x).toLocaleString();
+	document.getElementById('s-videos').textContent = n(d.totals.videos);
+	document.getElementById('s-views').textContent = n(d.totals.views);
+	document.getElementById('s-subs').textContent = n(d.totals.subscribers);
+	document.getElementById('stats').hidden = false;
+	const u = document.getElementById('s-updated'); u.textContent = 'Updated ' + d.updated + ' · public videos only'; u.hidden = false;
+	for (const c of d.channels) {
+		const el = document.querySelector(`[data-channel="${c.name}"]`);
+		if (el) el.innerHTML = `<span><b>${n(c.videos)}</b> videos</span><span><b>${n(c.views)}</b> views</span><span><b>${n(c.subscribers)}</b> subscribers</span>`;
+	}
+}).catch(() => {});
+</script>
 </body>
 </html>
