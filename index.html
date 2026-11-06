@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AutoTube</title>
-<meta name="description" content="AutoTube publishes the owner's animated explainer videos to their own YouTube channels, The Minds Sketch and Coinwise Sketch.">
+<meta name="description" content="AutoTube publishes the owner's animated explainers and short films to their own YouTube channels: The Minds Sketch, Coinwise Sketch and Tiny Streak.">
 <style>
 :root{--bg:#fff;--fg:#1d1d1f;--muted:#5f5f66;--card:#f6f3ec;--line:#e4dfd3;--accent:#0b6b6b}
 @media (prefers-color-scheme:dark){:root{--bg:#141319;--fg:#e8e1d4;--muted:#a9a39a;--card:#1f1d25;--line:#2e2b34;--accent:#8fc7bf}}
@@ -19,6 +19,10 @@ a{color:var(--accent)}
 .lead{color:var(--muted);font-size:1.1em;max-width:720px}
 .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
 .channel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.channel .head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.channel .head img{width:48px;height:48px;border-radius:50%;flex:none}
+.channel .head h3{margin:0}
+.tag{display:inline-block;font-size:.78em;padding:1px 8px;border-radius:999px;background:var(--line);color:var(--muted);margin-left:6px;vertical-align:2px}
 .cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:16px}
 figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 figure img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
@@ -32,12 +36,13 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 <body>
 <main>
 <h1>AutoTube</h1>
-<p class="lead">AutoTube is a private tool its owner uses to make animated explainer videos and publish them to their own YouTube channels. It is not offered to the public and does not access anyone else's account.</p>
+<p class="lead">AutoTube is a private tool its owner uses to make animated explainers and short films and publish them to their own YouTube channels. It is not offered to the public and does not access anyone else's account.</p>
 
 <h2>The channels</h2>
 <div class="channels">
-	<div class="channel"><h3>The Minds Sketch</h3><p>Psychology explained in bright, hand-drawn style: why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
-	<div class="channel"><h3>Coinwise Sketch</h3><p>Everyday money as a story at night: inflation, compound interest, and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_minds_sketch.png" alt=""><h3>The Minds Sketch</h3></div><p>Psychology explained in bright, hand-drawn style: why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_coinwise.png" alt=""><h3>Coinwise Sketch</h3></div><p>Everyday money as a story at night: inflation, compound interest, and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_tiny_streak.png" alt=""><h3>Tiny Streak<span class="tag">coming soon</span></h3></div><p>Wordless animated short films about building habits and beating the urges that pull us back: a small character, a day counter, one small step at a time.</p><a href="https://www.youtube.com/@tinystreak">youtube.com/@tinystreak</a></div>
 </div>
 
 <h2>Meet the characters</h2>
@@ -54,6 +59,9 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 	<figure><img src="img/ms_purple.jpg" alt="Purple character, surprised" loading="lazy"><figcaption><b>Purple</b>Overthinks, worries, then figures it out.</figcaption></figure>
 	<figure><img src="img/ms_coral.jpg" alt="Coral character, excited with arms up" loading="lazy"><figcaption><b>Coral</b>All feelings, all at once.</figcaption></figure>
 </div>
+
+<p class="note" style="margin-top:20px">Tiny Streak (coming soon): no narration. A small figure, a warm habit light in a dark room, and a day counter that tells the story; voices are gibberish mumbles and sighs, the comedy is physical.</p>
+<img class="sheet" src="img/tiny_streak_preview.jpg" alt="Tiny Streak style test: a small dark figure reading at a desk under a warm lamp at night, with DAY 14 in the corner" loading="lazy" style="max-width:640px">
 
 <h2>How they feel</h2>
 <p>Characters act their feelings instead of just changing faces: a blink before the change, a reaction that settles, and the body joins in: a jolt when shocked, a slump when sad, a tremble when angry, a hop when excited.</p>
