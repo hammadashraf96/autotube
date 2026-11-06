@@ -1,7 +1,69 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoTube</title><style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6;color:#1d1d1f;background:#fff}h1{font-size:1.8em}a{color:#0b6b6b}footer{margin-top:40px;font-size:.9em;color:#666}@media (prefers-color-scheme:dark){body{background:#141319;color:#e8e1d4}a{color:#8fc7bf}footer{color:#999}}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AutoTube</title>
+<meta name="description" content="AutoTube publishes the owner's animated explainer videos to their own YouTube channels, The Minds Sketch and Coinwise Sketch.">
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--muted:#5f5f66;--card:#f6f3ec;--line:#e4dfd3;--accent:#0b6b6b}
+@media (prefers-color-scheme:dark){:root{--bg:#141319;--fg:#e8e1d4;--muted:#a9a39a;--card:#1f1d25;--line:#2e2b34;--accent:#8fc7bf}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg)}
+main{max-width:1040px;margin:0 auto;padding:40px 16px 56px}
+h1{font-size:2.2em;margin:0 0 4px}
+h2{font-size:1.4em;margin:48px 0 6px}
+h3{margin:0 0 2px;font-size:1.05em}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lead{color:var(--muted);font-size:1.1em;max-width:720px}
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+.channel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:16px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+figure img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+figcaption{padding:10px 12px 12px;font-size:.92em;color:var(--muted)}
+figcaption b{display:block;color:var(--fg);font-size:1.05em}
+.sheet{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-top:12px}
+.note{color:var(--muted);font-size:.95em}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:.92em;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
 <h1>AutoTube</h1>
-<p>AutoTube is a private tool that its owner uses to publish their own animated explainer videos to their own YouTube channels, <i>The Minds Sketch</i> and <i>Coinwise Sketch</i>.</p>
-<p>It uses the YouTube Data API and YouTube Analytics API to upload videos, set titles, descriptions, captions and thumbnails, and read view statistics for those channels. It is not offered to the public and does not access anyone else's account.</p>
-<p><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a></p>
-<footer>Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a>.</footer>
-</body></html>
+<p class="lead">AutoTube is a private tool its owner uses to make animated explainer videos and publish them to their own YouTube channels. It is not offered to the public and does not access anyone else's account.</p>
+
+<h2>The channels</h2>
+<div class="channels">
+	<div class="channel"><h3>The Minds Sketch</h3><p>Psychology explained in bright, hand-drawn style: why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
+	<div class="channel"><h3>Coinwise Sketch</h3><p>Everyday money as a story at night: inflation, compound interest, and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
+</div>
+
+<h2>Meet the characters</h2>
+<p class="note">Coinwise Sketch: four people who live through each episode's money lesson.</p>
+<div class="cast">
+	<figure><img src="img/nora.jpg" alt="Nora, smiling at her desk at night" loading="lazy"><figcaption><b>Nora</b>Learning how money really works, one month at a time.</figcaption></figure>
+	<figure><img src="img/walt.jpg" alt="Walt, Nora's grandfather, delighted at the dinner table" loading="lazy"><figcaption><b>Walt</b>Nora's grandfather. Remembers paying in cash and the cost of waiting.</figcaption></figure>
+	<figure><img src="img/sam.jpg" alt="Sam the baker behind his counter" loading="lazy"><figcaption><b>Sam</b>Runs the bakery. Sourdough starter, round prices, honest advice.</figcaption></figure>
+	<figure><img src="img/leo.jpg" alt="Leo, surprised, in his new flat" loading="lazy"><figcaption><b>Leo</b>Nora's friend, buying his first flat and learning the hard way.</figcaption></figure>
+</div>
+<p class="note" style="margin-top:20px">The Minds Sketch: simple characters who act out each idea.</p>
+<div class="cast">
+	<figure><img src="img/ms_teal.jpg" alt="Teal character, happy" loading="lazy"><figcaption><b>Teal</b>Usually the one who gets it right.</figcaption></figure>
+	<figure><img src="img/ms_purple.jpg" alt="Purple character, surprised" loading="lazy"><figcaption><b>Purple</b>Overthinks, worries, then figures it out.</figcaption></figure>
+	<figure><img src="img/ms_coral.jpg" alt="Coral character, excited with arms up" loading="lazy"><figcaption><b>Coral</b>All feelings, all at once.</figcaption></figure>
+</div>
+
+<h2>How they feel</h2>
+<p>Characters act their feelings instead of just changing faces: a blink before the change, a reaction that settles, and the body joins in: a jolt when shocked, a slump when sad, a tremble when angry, a hop when excited.</p>
+<img class="sheet" src="img/coinwise_feelings.jpg" alt="Leo showing seven feelings: shocked, angry, sad, scared, embarrassed, confused, excited, each at its start and once settled" loading="lazy">
+<img class="sheet" src="img/mind_sketch_feelings.jpg" alt="Mind Sketch characters showing twelve feelings from happy to excited" loading="lazy">
+
+<h2>What AutoTube does</h2>
+<p>It uses the YouTube Data API and YouTube Analytics API to upload the owner's videos, set titles, descriptions, captions and thumbnails, and read view statistics for those channels.</p>
+
+<footer><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a> · Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a></footer>
+</main>
+</body>
+</html>
