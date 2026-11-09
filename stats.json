@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-09 11:00 UTC",
+ "updated": "2026-11-09 12:58 UTC",
  "totals": {
   "videos": 21,
-  "views": 149,
-  "subscribers": 3
+  "views": 157,
+  "subscribers": 5
  },
  "channels": [
   {
    "name": "The Minds Sketch",
    "handle": "@the-minds-sketch",
    "videos": 10,
-   "views": 57,
+   "views": 59,
    "subscribers": 1
   },
   {
@@ -24,8 +24,8 @@
    "name": "Tiny Streak",
    "handle": "@tinystreak",
    "videos": 4,
-   "views": 74,
-   "subscribers": 1
+   "views": 80,
+   "subscribers": 3
   }
  ]
 }
