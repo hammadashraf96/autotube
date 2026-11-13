@@ -1,9 +1,9 @@
 {
  "updated": "2026-11-13 21:05 UTC",
  "totals": {
-  "videos": 23,
-  "views": 169,
-  "subscribers": 3
+  "videos": 28,
+  "views": 297,
+  "subscribers": 6
  },
  "channels": [
   {
@@ -19,6 +19,13 @@
    "videos": 10,
    "views": 39,
    "subscribers": 1
+  },
+  {
+   "name": "Tiny Streak",
+   "handle": "@tinystreak",
+   "videos": 5,
+   "views": 128,
+   "subscribers": 3
   }
  ]
 }
