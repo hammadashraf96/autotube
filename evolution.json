@@ -1,0 +1,227 @@
+{
+ "updated": "2026-11-14",
+ "milestones": [
+  {
+   "date": "2026-10-28",
+   "channel": "The Minds Sketch",
+   "text": "First video: flat explainer cards, captions and a narrator."
+  },
+  {
+   "date": "2026-11-04",
+   "channel": "Coinwise Sketch",
+   "text": "Channel starts: story episodes with Nora, Walt, Sam and Leo in night-time scenes."
+  },
+  {
+   "date": "2026-11-05",
+   "channel": "",
+   "text": "Nightly production: one new public video per channel every night."
+  },
+  {
+   "date": "2026-11-06",
+   "channel": "Tiny Streak",
+   "text": "Channel starts: wordless short films with Pip, the Glim and a day counter."
+  },
+  {
+   "date": "2026-11-06",
+   "channel": "",
+   "text": "Characters get feelings (moods, tears, sweat), felt-piano jingles on every channel."
+  },
+  {
+   "date": "2026-11-10",
+   "channel": "Coinwise Sketch",
+   "text": "Search-first titles: each episode opens by promising what you will learn."
+  },
+  {
+   "date": "2026-11-11",
+   "channel": "The Minds Sketch",
+   "text": "New look: paper collage, sticker characters, newsprint clippings."
+  },
+  {
+   "date": "2026-11-11",
+   "channel": "Coinwise Sketch",
+   "text": "New look: editorial desk, documents, coin towers, framed story scenes."
+  },
+  {
+   "date": "2026-11-11",
+   "channel": "Tiny Streak",
+   "text": "Films grow to five minutes; Pip is redrawn (hair, duffel coat, orange scarf)."
+  },
+  {
+   "date": "2026-11-13",
+   "channel": "Tiny Streak",
+   "text": "Pip gets a new voice; first film with the redrawn Pip (Rain or Shine)."
+  },
+  {
+   "date": "2026-11-13",
+   "channel": "",
+   "text": "Physics checks: storyboards and rendered frames are checked so nothing floats or passes through anything."
+  },
+  {
+   "date": "2026-11-14",
+   "channel": "Tiny Streak",
+   "text": "Story captions on torn newsprint for every shot, and a moral card at the end of each film."
+  }
+ ],
+ "channels": [
+  {
+   "name": "The Minds Sketch",
+   "videos": [
+    {
+     "date": "2026-10-28",
+     "id": "9WrcZpbKJOQ",
+     "title": "The Psychology of Luck"
+    },
+    {
+     "date": "2026-10-29",
+     "id": "ZOe4UHQW5iU",
+     "title": "The Psychology of Intelligence: How to Actually Get Smarter"
+    },
+    {
+     "date": "2026-10-29",
+     "id": "CISK5VN3ZVk",
+     "title": "The Psychology of Discipline: Why Willpower Isn't the Secret"
+    },
+    {
+     "date": "2026-10-29",
+     "id": "cH5caFdhrVQ",
+     "title": "The Psychology of Learning Fast: How to Master Any Skill Sooner"
+    },
+    {
+     "date": "2026-11-04",
+     "id": "6mVwnUipQQo",
+     "title": "The Psychology of Procrastination: Why We Delay and How to Stop"
+    },
+    {
+     "date": "2026-11-05",
+     "id": "qDUSjm_TNP4",
+     "title": "The Psychology of Overthinking: Why Your Mind Won't Stop and How to Quiet It"
+    },
+    {
+     "date": "2026-11-06",
+     "id": "4cQHqFXKPAY",
+     "title": "The Psychology of First Impressions: What People Decide in Seconds"
+    },
+    {
+     "date": "2026-11-07",
+     "id": "sJjoaVeuhso",
+     "title": "The Psychology of Anger: Why We Snap and How to Cool Down"
+    },
+    {
+     "date": "2026-11-08",
+     "id": "Ri5oo-k88QI",
+     "title": "The Psychology of Curiosity: Why Questions Make Us Smarter and Happier"
+    },
+    {
+     "date": "2026-11-09",
+     "id": "uB28mSKCjOo",
+     "title": "The Psychology of Loneliness: Why It Hurts and How We Find Our Way Back"
+    },
+    {
+     "date": "2026-11-10",
+     "id": "DDgy8QcBcfU",
+     "title": "The Psychology of Kindness: Why Small Acts Matter More Than We Think"
+    },
+    {
+     "date": "2026-11-12",
+     "id": "8zooJ46MoY0",
+     "title": "The Psychology of Stress: Why It Hits So Hard and How to Make It Work for You"
+    },
+    {
+     "date": "2026-11-13",
+     "id": "Vu-3RJKpTCs",
+     "title": "The Psychology of Confidence: Where It Really Comes From and How to Build It"
+    }
+   ]
+  },
+  {
+   "name": "Coinwise Sketch",
+   "videos": [
+    {
+     "date": "2026-11-04",
+     "id": "feuSoKDrpgI",
+     "title": "What Is Inflation? Why Your Money Buys Less Every Year · The Drawer"
+    },
+    {
+     "date": "2026-11-04",
+     "id": "vAWL2zou410",
+     "title": "How Compound Interest Works: Make It Work For You, Not Against You · The Slow Machine"
+    },
+    {
+     "date": "2026-11-05",
+     "id": "RGsOKkywAgY",
+     "title": "Why You Spend More Than You Plan: The Psychology of Prices · The Price Tag Trick"
+    },
+    {
+     "date": "2026-11-06",
+     "id": "fHlCZO54iRc",
+     "title": "How to Build an Emergency Fund (and Why Everyone Needs One) · The Rainy Day"
+    },
+    {
+     "date": "2026-11-07",
+     "id": "hy4Z-RO7tAo",
+     "title": "How Credit Scores Really Work (and How to Raise Yours) · The Score"
+    },
+    {
+     "date": "2026-11-08",
+     "id": "b5fTp24Ms84",
+     "title": "Lifestyle Creep: Why a Pay Raise Doesn't Leave You Richer · The Raise"
+    },
+    {
+     "date": "2026-11-09",
+     "id": "Lp5s4T9HJW0",
+     "title": "Debt Snowball vs Avalanche: Which Way Should You Pay Off Debt? · The Debt Ladder"
+    },
+    {
+     "date": "2026-11-11",
+     "id": "CUkrj96TK20",
+     "title": "How Index Funds Work: Why Most People Can't Beat the Market · The Basket"
+    },
+    {
+     "date": "2026-11-12",
+     "id": "CQco4Llm-WY",
+     "title": "How to Make a Budget That Works: The 50/30/20 Rule · The Envelopes"
+    },
+    {
+     "date": "2026-11-13",
+     "id": "NT0rflDYnZo",
+     "title": "How Retirement Accounts Work: Why the Employer Match Is Free Money · The Match"
+    }
+   ]
+  },
+  {
+   "name": "Tiny Streak",
+   "videos": [
+    {
+     "date": "2026-11-06",
+     "id": "oStvR1ZWPI0",
+     "title": "One Page a Day | A Tiny Streak Film"
+    },
+    {
+     "date": "2026-11-07",
+     "id": "lJZmYXaYbB0",
+     "title": "Five Minutes | A Tiny Streak Film"
+    },
+    {
+     "date": "2026-11-08",
+     "id": "JX0p0AH7MJ8",
+     "title": "Glass by Glass | A Tiny Streak Film"
+    },
+    {
+     "date": "2026-11-09",
+     "id": "XcJrr2apVZI",
+     "title": "The Marble Jar | A Tiny Streak Film"
+    },
+    {
+     "date": "2026-11-10",
+     "id": "0uitjawiRLw",
+     "title": "The Paper Chain | A Tiny Streak Film"
+    },
+    {
+     "date": "2026-11-13",
+     "id": "h4J27Vb07Xk",
+     "title": "Rain or Shine | A Tiny Streak Film"
+    }
+   ]
+  }
+ ]
+}

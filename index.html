@@ -44,7 +44,21 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 .nums{display:flex;gap:14px;margin:6px 0 10px;color:var(--muted);font-size:.9em}
 .nums b{color:var(--fg)}
 .diagram{display:block;width:100%;height:auto;background:#fff;border-radius:14px;border:1px solid var(--line);padding:10px;margin-top:12px}
-@media (max-width:560px){.stats{grid-template-columns:1fr}}
+.evo-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 18px}
+.evo-pair figure img,.evo-three figure img{aspect-ratio:16/9}
+.evo-three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 18px}
+.evo-pip{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:14px;margin:10px 0 18px}
+.miles{list-style:none;padding:0;margin:10px 0 0;border-left:3px solid var(--line)}
+.miles li{position:relative;padding:4px 0 10px 18px}
+.miles li::before{content:"";position:absolute;left:-8px;top:11px;width:13px;height:13px;border-radius:50%;background:var(--accent)}
+.miles time{font-weight:700;margin-right:6px}
+.miles .ch{color:var(--muted);font-size:.9em}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:10px}
+.vid{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.vid span{display:block;padding:8px 10px 10px;font-size:.86em;line-height:1.35}
+.vid small{display:block;color:var(--muted);margin-bottom:2px}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.evo-three{grid-template-columns:1fr}.evo-pair{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -55,6 +69,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 <div class="tabs" role="tablist">
 	<button role="tab" id="t-overview" aria-controls="overview" aria-selected="true">Overview</button>
 	<button role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
+	<button role="tab" id="t-evolution" aria-controls="evolution" aria-selected="false">Evolution</button>
 </div>
 
 <section class="panel" id="overview" role="tabpanel" aria-labelledby="t-overview">
@@ -127,6 +142,40 @@ a point where the work stops for an approval.</p>
 <img class="diagram" src="img/how-it-works.svg" alt="Flow: channels, how a video starts, write and plan with approval gates, make voices and previews with an approval gate, render in resumable chunks, quality checks in order, then upload per channel, analytics and a learning loop that feeds the next topics">
 </section>
 
+<section class="panel" id="evolution" role="tabpanel" aria-labelledby="t-evolution" hidden>
+<h2>How the channels grew</h2>
+<p>Every channel started simple and changed as the videos came out. Here is what each looked like at the start and what it looks
+like now, how the characters changed, and every public video so far.</p>
+
+<h3>The Minds Sketch</h3>
+<div class="evo-three">
+<figure><img src="img/evo/ms_oct.jpg" alt="October: a flat explainer chart on a mint background" loading="lazy"><figcaption><b>October</b>Flat explainer cards and a narrator.</figcaption></figure>
+<figure><img src="img/evo/ms_nov.jpg" alt="Early November: rounded comparison cards" loading="lazy"><figcaption><b>Early November</b>Cleaner cards and icons.</figcaption></figure>
+<figure><img src="img/evo/ms_now.jpg" alt="Now: a paper collage title with two sticker characters" loading="lazy"><figcaption><b>Now</b>Paper collage with sticker characters.</figcaption></figure>
+</div>
+<h3>Coinwise Sketch</h3>
+<div class="evo-pair">
+<figure><img src="img/evo/cw_then.jpg" alt="Nora at the night-time bakery with Sam" loading="lazy"><figcaption><b>Then</b>Story scenes at night.</figcaption></figure>
+<figure><img src="img/evo/cw_now.jpg" alt="A framed story scene on a cream editorial desk" loading="lazy"><figcaption><b>Now</b>Framed scenes on an editorial desk.</figcaption></figure>
+</div>
+<h3>Tiny Streak and Pip</h3>
+<div class="evo-pair">
+<figure><img src="img/evo/ts_then.jpg" alt="The first Pip, a black silhouette with an orange scarf, at his desk" loading="lazy"><figcaption><b>Then</b>Pip as a black silhouette.</figcaption></figure>
+<figure><img src="img/evo/ts_now.jpg" alt="The redrawn Pip in a navy duffel coat at the bus stop" loading="lazy"><figcaption><b>Now</b>The redrawn Pip, with a new voice and story captions.</figcaption></figure>
+</div>
+<div class="evo-pip">
+<figure><img src="img/evo/pip_v1.jpg" alt="Pip, first version" loading="lazy"><figcaption><b>Pip, first version</b>November 6</figcaption></figure>
+<figure><img src="img/evo/pip_v2.jpg" alt="Pip, redrawn, with a duck" loading="lazy"><figcaption><b>Pip, redrawn</b>November 13</figcaption></figure>
+</div>
+
+<h2>Milestones</h2>
+<ul class="miles" id="miles"></ul>
+
+<h2>Every video so far</h2>
+<p class="note" id="evo-updated" hidden></p>
+<div id="evo-videos"></div>
+</section>
+
 <footer><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a> · Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a></footer>
 </main>
 <script>
@@ -136,7 +185,7 @@ function show(id) {
 	tabs.forEach((t) => { const on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
 }
 tabs.forEach((t) => t.addEventListener('click', () => { show(t.getAttribute('aria-controls')); history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }));
-if (location.hash === '#how') show('how');
+if (['#how', '#evolution'].includes(location.hash)) show(location.hash.slice(1));
 // channel stats (stats.json, refreshed nightly by tools/site.py)
 fetch('stats.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
 	if (!d) return;
@@ -150,6 +199,16 @@ fetch('stats.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).the
 		const el = document.querySelector(`[data-channel="${c.name}"]`);
 		if (el) el.innerHTML = `<span><b>${n(c.videos)}</b> videos</span><span><b>${n(c.views)}</b> views</span><span><b>${n(c.subscribers)}</b> subscribers</span>`;
 	}
+}).catch(() => {});
+
+// evolution (evolution.json, refreshed with the stats by tools/site.py)
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+fetch('evolution.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
+	if (!d) return;
+	document.getElementById('miles').innerHTML = d.milestones.map((m) => `<li><time>${esc(m.date)}</time>${m.channel ? `<span class="ch">${esc(m.channel)} · </span>` : ''}${esc(m.text)}</li>`).join('');
+	document.getElementById('evo-videos').innerHTML = d.channels.map((c) => `<h3>${esc(c.name)} <span class="tag">${c.videos.length} videos</span></h3><div class="vids">` +
+		c.videos.map((v) => `<a class="vid" href="https://youtu.be/${esc(v.id)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy"><span><small>${esc(v.date)}</small>${esc(v.title)}</span></a>`).join('') + '</div>').join('');
+	const u = document.getElementById('evo-updated'); u.textContent = 'Oldest first · updated ' + d.updated; u.hidden = false;
 }).catch(() => {});
 </script>
 </body>
