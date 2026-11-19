@@ -58,6 +58,10 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 .vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .vid span{display:block;padding:8px 10px 10px;font-size:.86em;line-height:1.35}
 .vid small{display:block;color:var(--muted);margin-bottom:2px}
+.sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin:12px 0 22px}
+.sec div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.sec h3{margin:0 0 6px;font-size:1.02em}
+.sec p{margin:0;color:var(--muted);font-size:.93em}
 @media (max-width:560px){.stats{grid-template-columns:1fr}.evo-three{grid-template-columns:1fr}.evo-pair{grid-template-columns:1fr}}
 </style>
 </head>
@@ -70,6 +74,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 	<button role="tab" id="t-overview" aria-controls="overview" aria-selected="true">Overview</button>
 	<button role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
 	<button role="tab" id="t-evolution" aria-controls="evolution" aria-selected="false">Evolution</button>
+	<button role="tab" id="t-security" aria-controls="security" aria-selected="false">Security</button>
 </div>
 
 <section class="panel" id="overview" role="tabpanel" aria-labelledby="t-overview">
@@ -176,6 +181,37 @@ like now, how the characters changed, and every public video so far.</p>
 <div id="evo-videos"></div>
 </section>
 
+<section class="panel" id="security" role="tabpanel" aria-labelledby="t-security" hidden>
+<h2>Security and safety</h2>
+<p>AutoTube runs on one computer owned by its operator. It makes videos for the operator's own channels and nothing else.
+These are the safeguards built into it.</p>
+
+<h3>Accounts and access</h3>
+<div class="sec">
+<div><h3>One Google account per channel</h3><p>Every channel has its own Google account and its own Google Cloud project, so a problem with one channel cannot reach another.</p></div>
+<div><h3>Only the permissions it needs</h3><p>Sign-in asks for three YouTube permissions: upload, manage the channel's own videos, and read its analytics (read-only). It never asks for Gmail, Drive or contacts.</p></div>
+<div><h3>Credentials stay on the machine</h3><p>Sign-in tokens and app secrets are stored locally, excluded from version control and backups, and never printed, logged or shared.</p></div>
+<div><h3>No third-party data</h3><p>AutoTube only accesses the operator's own channels. It does not read, store or act on anyone else's account or data. See the <a href="privacy.html">privacy policy</a>.</p></div>
+</div>
+
+<h3>Publishing</h3>
+<div class="sec">
+<div><h3>Private by default</h3><p>Uploads are private unless public is chosen explicitly. The upload tool refuses a public upload that lacks a separate confirmation flag.</p></div>
+<div><h3>Quality gates before upload</h3><p>A video is uploaded only after every automatic check passes: length rules, layout, captions, audio levels and pacing. Script, scene plan and visuals each wait for approval.</p></div>
+<div><h3>Original work only</h3><p>Reference videos are studied for technique and never re-published. A check refuses to render or upload a video that repeats another video's title or content.</p></div>
+<div><h3>No workarounds</h3><p>If a site blocks a download (bot checks, logins), AutoTube does not try to get round it.</p></div>
+</div>
+
+<h3>The machine</h3>
+<div class="sec">
+<div><h3>Local processing</h3><p>Voices, transcripts, images and renders are all made on the local machine. Scripts and footage are not sent to paid cloud services for generation.</p></div>
+<div><h3>Dashboard is local only</h3><p>The control dashboard listens only on the machine itself (127.0.0.1), so other devices on the network cannot reach it. Its built-in assistant can only read; it cannot run commands or edit files, and is blocked from credential folders.</p></div>
+<div><h3>Disk failsafe</h3><p>Every heavy job (renders, image generation, downloads, frame extraction) checks free disk space first and refuses to start when space runs low. It also watches the virtual disk for I/O errors. Cleanup is a dry run unless confirmed and never touches finished videos, configuration or credentials.</p></div>
+<div><h3>Backups without secrets</h3><p>Essential files (scripts, configuration, documents) can be backed up into a verified archive. The archive is checked to make sure it contains no credentials.</p></div>
+</div>
+<p class="note">Found a security problem? Please <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a> without including sensitive details, and the operator will follow up.</p>
+</section>
+
 <footer><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a> · Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a></footer>
 </main>
 <script>
@@ -185,7 +221,7 @@ function show(id) {
 	tabs.forEach((t) => { const on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
 }
 tabs.forEach((t) => t.addEventListener('click', () => { show(t.getAttribute('aria-controls')); history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }));
-if (['#how', '#evolution'].includes(location.hash)) show(location.hash.slice(1));
+if (['#how', '#evolution', '#security'].includes(location.hash)) show(location.hash.slice(1));
 // channel stats (stats.json, refreshed nightly by tools/site.py)
 fetch('stats.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
 	if (!d) return;
