@@ -1,0 +1,121 @@
+{
+ "updated": "2026-11-19 08:32 UTC",
+ "nights": [
+  "2026-11-05",
+  "2026-11-06",
+  "2026-11-07",
+  "2026-11-08",
+  "2026-11-09",
+  "2026-11-10",
+  "2026-11-11",
+  "2026-11-12",
+  "2026-11-13",
+  "2026-11-14",
+  "2026-11-15",
+  "2026-11-16",
+  "2026-11-17",
+  "2026-11-18"
+ ],
+ "ran": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  false,
+  true,
+  false
+ ],
+ "uptime_pct": 79,
+ "channels": [
+  {
+   "name": "The Minds Sketch",
+   "handle": "@the-minds-sketch",
+   "status": "active",
+   "nights": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "last_upload": {
+    "date": "2026-11-15",
+    "title": "The Psychology of Resilience: How People Bounce Back (and How You Can Too)",
+    "url": "https://youtu.be/axOLwkG_AEI"
+   }
+  },
+  {
+   "name": "Coinwise Sketch",
+   "handle": "@Coinwise-Sketch",
+   "status": "active",
+   "nights": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    false,
+    true,
+    false
+   ],
+   "last_upload": {
+    "date": "2026-11-18",
+    "title": "How Insurance Works: Premiums, Deductibles and When Cheap Plans Cost More \u00b7 The Policy",
+    "url": "https://youtu.be/iBsklBIX1_4"
+   }
+  },
+  {
+   "name": "Tiny Streak",
+   "handle": "@tinystreak",
+   "status": "active",
+   "nights": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false
+   ],
+   "last_upload": {
+    "date": "2026-11-18",
+    "title": "The Grumpy Mirror | A Tiny Streak Film",
+    "url": "https://youtu.be/S8Nw3bEvepc"
+   }
+  }
+ ],
+ "checks": {
+  "last_run": "2026-11-19",
+  "disk": "OK",
+  "security": "OK"
+ }
+}
