@@ -33,7 +33,7 @@ figcaption b{display:block;color:var(--fg);font-size:1.05em}
 .sheet{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-top:12px}
 .note{color:var(--muted);font-size:.95em}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:.92em;color:var(--muted)}
-.tabs{display:flex;gap:6px;margin:22px 0 8px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 8px;border-bottom:1px solid var(--line)}
 .tabs button{font:inherit;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--muted);cursor:pointer}
 .tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
 .panel[hidden]{display:none}
@@ -83,6 +83,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 	<button role="tab" id="t-evolution" aria-controls="evolution" aria-selected="false">Evolution</button>
 	<button role="tab" id="t-status" aria-controls="status" aria-selected="false">Status</button>
 	<button role="tab" id="t-security" aria-controls="security" aria-selected="false">Security</button>
+	<button role="tab" id="t-versions" aria-controls="versions" aria-selected="false">Versions</button>
 </div>
 
 <section class="panel" id="overview" role="tabpanel" aria-labelledby="t-overview">
@@ -218,6 +219,7 @@ These are the safeguards built into it.</p>
 <h3>Publishing</h3>
 <div class="sec">
 <div><h3>Private by default</h3><p>Uploads are private unless public is chosen explicitly. The upload tool refuses a public upload that lacks a separate confirmation flag.</p></div>
+<div><h3>Comment replies with guardrails</h3><p>Replies to viewer comments are short and specific, may point to a timestamp or another video, and never contain links or contact details. Sensitive comments (crisis, legal, privacy, corrections) are never answered automatically; the operator handles them personally.</p></div>
 <div><h3>Upload audit log</h3><p>Every upload, visibility change and scheduled release is recorded with its time, channel, visibility, the flags used and what started it (the nightly run, the dashboard or a person). Refused attempts are logged too.</p></div>
 <div><h3>Quality gates before upload</h3><p>A video is uploaded only after every automatic check passes: length rules, layout, captions, audio levels and pacing. Script, scene plan and visuals each wait for approval.</p></div>
 <div><h3>Original work only</h3><p>Reference videos are studied for technique and never re-published. A check refuses to render or upload a video that repeats another video's title or content. Blocked downloads are never worked around.</p></div>
@@ -235,7 +237,8 @@ These are the safeguards built into it.</p>
 <div class="sec">
 <div><h3>Daily checks with alerts</h3><p>Once a day AutoTube checks disk space, credential permissions, container pins and every channel's sign-in. If something fails, it shows a desktop notification.</p></div>
 <div><h3>Sign-in health</h3><p>Each channel's sign-in is verified daily, and the dashboard shows its last refresh and any expiry date. Expiring or revoked sign-ins are flagged before they can break an upload.</p></div>
-<div><h3>Disk failsafe</h3><p>Every heavy job (renders, image generation, downloads, frame extraction) checks free disk space first and refuses to start when space runs low. The virtual disk is watched for I/O errors, and growth is forecast from the space each video uses.</p></div>
+<div><h3>Disk failsafe in four layers</h3><p>Renders no longer copy the asset library (the cause of two disk-full crashes in November, now covered by a test). Heavy jobs refuse to start when space is low. A live watchdog checks every 10 seconds and pauses jobs before the disk can fill. The virtual disk is compacted automatically when nothing is running.</p></div>
+<div><h3>Internet failsafe</h3><p>When the connection drops, uploads, publishing and the nightly run pause, and they resume by themselves when it is back. An interrupted upload continues from where it stopped instead of starting over or failing.</p></div>
 <div><h3>Public status</h3><p>The <a href="#status" onclick="show('status');return false">Status tab</a> shows whether each night's run published, with each channel's latest video.</p></div>
 </div>
 
@@ -243,9 +246,16 @@ These are the safeguards built into it.</p>
 <div class="sec">
 <div><h3>Encrypted off-machine backups</h3><p>Every week, scripts, configuration and documents are archived and verified, then encrypted with AES-256 and copied off the machine. Credentials are never included, and every archive is checked for them.</p></div>
 <div><h3>Safe cleanup</h3><p>Cleanup only removes data that can be regenerated, is a dry run unless confirmed, and never touches finished videos, configuration or credentials. Automated tests check that these protected files survive.</p></div>
-<div><h3>Incidents are written up</h3><p>When something goes wrong, the cause, the fix and the lessons are recorded, and safeguards are added so it can't happen silently again.</p></div>
+<div><h3>Incidents are written up</h3><p>When something goes wrong, the cause is measured, not guessed, and the fix and the lessons are recorded. Safeguards are then added so it can't happen silently again. Example: in November the disk filled twice; the cause was found by measurement and fixed at the root.</p></div>
 <div><h3>Report a vulnerability</h3><p>Please report problems privately through <a href="https://github.com/hammadashraf96/autotube/security/advisories/new">GitHub's private vulnerability reporting</a>. See the <a href="https://github.com/hammadashraf96/autotube/security/policy">security policy</a>.</p></div>
 </div>
+</section>
+
+<section class="panel" id="versions" role="tabpanel" aria-labelledby="t-versions" hidden>
+<h2>Version history</h2>
+<p>Every release of AutoTube, newest first. Each links to its full notes on GitHub.</p>
+<ul class="miles" id="ver-list"></ul>
+<p class="note" id="ver-updated"></p>
 </section>
 
 <footer><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a> · Questions: <a href="https://github.com/hammadashraf96/autotube/issues">open an issue</a></footer>
@@ -257,7 +267,14 @@ function show(id) {
 	tabs.forEach((t) => { const on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
 }
 tabs.forEach((t) => t.addEventListener('click', () => { show(t.getAttribute('aria-controls')); history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }));
-if (['#how', '#evolution', '#status', '#security'].includes(location.hash)) show(location.hash.slice(1));
+if (['#how', '#evolution', '#status', '#security', '#versions'].includes(location.hash)) show(location.hash.slice(1));
+// versions tab (versions.json, written by tools/versions.py on every release)
+fetch('versions.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
+	if (!d) return;
+	const e = (x) => String(x ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+	document.getElementById('ver-list').innerHTML = d.versions.map((v) => `<li><time>${e(v.version)}</time><span class="ch">${e(v.date)}</span><br>${e(v.summary)} <a href="${e(v.url)}" target="_blank" rel="noopener">notes</a></li>`).join('');
+	document.getElementById('ver-updated').textContent = `Updated ${d.updated}.`;
+});
 // status tab (status.json, refreshed with the stats by tools/site.py)
 fetch('status.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
 	if (!d) return;

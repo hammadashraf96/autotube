@@ -1,0 +1,47 @@
+{
+ "updated": "2026-11-19",
+ "versions": [
+  {
+   "version": "v8",
+   "date": "2026-11-19",
+   "summary": "Disk-crash root cause fixed (Remotion bundles no longer copy the 9 GB asset library: 9 GB to 0.3 GB per render), four-layer disk failsafe with live watchdog and automatic compaction, internet failsafe, comment auto-replies with guardrails, topic research, version history on GitHub and the landing page",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v8"
+  },
+  {
+   "version": "v7",
+   "date": "2026-11-19",
+   "summary": "Security and operations: secret scanning on every commit and site publish, digest-pinned Docker images, owner-only credential files, token health on the dashboard, upload audit log, SECURITY.md, encrypted off-machine backups, daily maintenance with Windows alerts, disk-use trends and forecast, landing-page Status tab, weekly digest",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v7"
+  },
+  {
+   "version": "v6",
+   "date": "2026-11-19",
+   "summary": "Disk failsafe after the Nov 17-18 WSL disk-full incident: disk check on every heavy stage (C: free, vhdx compaction gap, WSL I/O health), channel-agnostic cleanup of regenerable data only, compaction and backup scripts, dashboard Disk panel, Security tab on the landing page, incident report",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v6"
+  },
+  {
+   "version": "v5",
+   "date": "2026-11-06",
+   "summary": "Tiny Streak joins: film mode for wordless short films (gibberish voices, sound effects, film score, Pip and the Glim, lived-in sets, film QA), new felt-piano jingles on every channel, feelings for both channels' characters, smoother eased motion, channel setup guide with permanent Google sign-ins, nightly public production for all three channels",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v5"
+  },
+  {
+   "version": "v4",
+   "date": "2026-11-02",
+   "summary": "Framework release: checkpointed pipeline, approval gates, per-scene rendering, post-render QA, Shorts pipeline (clip finder, standalone rule, 9:16 render), multi-channel support (channels/ registry, youtube.py --channel), reference-analysis tools and channel style tests; framework-first README and architecture docs",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v4"
+  },
+  {
+   "version": "v3",
+   "date": "2026-11-02",
+   "summary": "Checkpointed pipeline with approval gates and contact sheets, post-render QA on every render, per-scene rendering + stitch, word-level caption component, dashboard GUI (Ready for you, analytics, retention, comments, calendar, readiness, chat), three 15-minute videos, new docs and landing page",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v3"
+  },
+  {
+   "version": "v2",
+   "date": "2026-10-28",
+   "summary": "Route A v2 (centred layout, fit-to-box text, backdrops, outlined characters, crossfades) + Route B v2 captions; automatic layout check; repo library; dashboard",
+   "url": "https://github.com/hammadashraf96/YTautomation/releases/tag/v2"
+  }
+ ]
+}
