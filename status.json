@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 19:20 UTC",
+ "updated": "2026-11-21 01:21 UTC",
  "nights": [
   "2026-11-06",
   "2026-11-07",
@@ -30,9 +30,9 @@
   false,
   true,
   false,
-  false
+  true
  ],
- "uptime_pct": 71,
+ "uptime_pct": 79,
  "channels": [
   {
    "name": "The Minds Sketch",
@@ -55,9 +55,9 @@
     false
    ],
    "last_upload": {
-    "date": "2026-11-15",
-    "title": "The Psychology of Resilience: How People Bounce Back (and How You Can Too)",
-    "url": "https://youtu.be/axOLwkG_AEI"
+    "date": "2026-11-20",
+    "title": "The Psychology of Decision Making: How to Make Better Choices (Without Overthinking)",
+    "url": "https://youtu.be/Nr-uPwbIQ90"
    }
   },
   {
@@ -81,9 +81,9 @@
     false
    ],
    "last_upload": {
-    "date": "2026-11-18",
-    "title": "How Insurance Works: Premiums, Deductibles and When Cheap Plans Cost More \u00b7 The Policy",
-    "url": "https://youtu.be/iBsklBIX1_4"
+    "date": "2026-11-20",
+    "title": "How to Negotiate a Salary: What to Say When You Get a Job Offer \u00b7 The Offer",
+    "url": "https://youtu.be/XFl20DQ3c40"
    }
   },
   {
@@ -104,12 +104,12 @@
     false,
     true,
     false,
-    false
+    true
    ],
    "last_upload": {
-    "date": "2026-11-18",
-    "title": "The Grumpy Mirror | A Tiny Streak Film",
-    "url": "https://youtu.be/S8Nw3bEvepc"
+    "date": "2026-11-19",
+    "title": "Little Labels | A Tiny Streak Film",
+    "url": "https://youtu.be/11BygJ8UJnA"
    }
   }
  ],
