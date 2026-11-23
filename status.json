@@ -1,7 +1,6 @@
 {
- "updated": "2026-11-22 23:08 UTC",
+ "updated": "2026-11-23 10:16 UTC",
  "nights": [
-  "2026-11-08",
   "2026-11-09",
   "2026-11-10",
   "2026-11-11",
@@ -14,7 +13,8 @@
   "2026-11-18",
   "2026-11-19",
   "2026-11-20",
-  "2026-11-21"
+  "2026-11-21",
+  "2026-11-22"
  ],
  "ran": [
   true,
@@ -23,23 +23,22 @@
   true,
   true,
   true,
-  true,
   false,
   false,
   true,
   false,
   true,
   true,
+  false,
   false
  ],
- "uptime_pct": 71,
+ "uptime_pct": 64,
  "channels": [
   {
    "name": "The Minds Sketch",
    "handle": "@the-minds-sketch",
    "status": "active",
    "nights": [
-    true,
     false,
     true,
     true,
@@ -52,6 +51,7 @@
     false,
     false,
     true,
+    false,
     false
    ],
    "last_upload": {
@@ -65,7 +65,6 @@
    "handle": "@Coinwise-Sketch",
    "status": "active",
    "nights": [
-    true,
     false,
     true,
     true,
@@ -78,6 +77,7 @@
     false,
     false,
     true,
+    false,
     false
    ],
    "last_upload": {
@@ -91,7 +91,6 @@
    "handle": "@tinystreak",
    "status": "active",
    "nights": [
-    true,
     false,
     true,
     false,
@@ -103,6 +102,7 @@
     true,
     false,
     true,
+    false,
     false,
     false
    ],
