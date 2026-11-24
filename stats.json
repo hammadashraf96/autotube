@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-24 16:15 UTC",
+ "updated": "2026-11-24 21:05 UTC",
  "totals": {
-  "videos": 53,
-  "views": 444,
+  "videos": 56,
+  "views": 467,
   "subscribers": 6
  },
  "channels": [
@@ -10,21 +10,21 @@
    "name": "The Minds Sketch",
    "handle": "@the-minds-sketch",
    "videos": 22,
-   "views": 223,
+   "views": 232,
    "subscribers": 2
   },
   {
    "name": "Coinwise Sketch",
    "handle": "@Coinwise-Sketch",
    "videos": 19,
-   "views": 60,
+   "views": 61,
    "subscribers": 1
   },
   {
    "name": "Tiny Streak",
    "handle": "@tinystreak",
-   "videos": 12,
-   "views": 161,
+   "videos": 15,
+   "views": 174,
    "subscribers": 3
   }
  ]
