@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 10:07 UTC",
+ "updated": "2026-11-24 16:15 UTC",
  "nights": [
   "2026-11-10",
   "2026-11-11",
@@ -30,9 +30,9 @@
   true,
   false,
   false,
-  false
+  true
  ],
- "uptime_pct": 57,
+ "uptime_pct": 64,
  "channels": [
   {
    "name": "The Minds Sketch",
@@ -52,12 +52,12 @@
     true,
     false,
     false,
-    false
+    true
    ],
    "last_upload": {
-    "date": "2026-11-20",
-    "title": "The Psychology of Decision Making: How to Make Better Choices (Without Overthinking)",
-    "url": "https://youtu.be/Nr-uPwbIQ90"
+    "date": "2026-11-24",
+    "title": "The Psychology of Social Media: Why We Can't Stop Scrolling (and What It Does to Us)",
+    "url": "https://youtu.be/NfLufvOPbH4"
    }
   },
   {
@@ -78,12 +78,12 @@
     true,
     false,
     false,
-    false
+    true
    ],
    "last_upload": {
-    "date": "2026-11-20",
-    "title": "Rent or Buy a Home: Is Renting Really Throwing Money Away? \u00b7 The Lease",
-    "url": "https://youtu.be/Xzoi7Q_PITw"
+    "date": "2026-11-24",
+    "title": "How Credit Card Interest Works: Why the Minimum Payment Keeps You in Debt \u00b7 The Minimum",
+    "url": "https://youtu.be/mpZXraBDQW8"
    }
   },
   {
@@ -104,12 +104,12 @@
     false,
     false,
     false,
-    false
+    true
    ],
    "last_upload": {
-    "date": "2026-11-19",
-    "title": "Little Labels | A Tiny Streak Film",
-    "url": "https://youtu.be/11BygJ8UJnA"
+    "date": "2026-11-24",
+    "title": "Ten Slow Breaths | A Tiny Streak Film",
+    "url": "https://youtu.be/sEVD0fnUbXE"
    }
   }
  ],
