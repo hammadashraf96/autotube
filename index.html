@@ -32,6 +32,13 @@ figcaption b{display:block;color:var(--fg);font-size:1.05em}
 .looks figure img{aspect-ratio:16/9}
 .sheet{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-top:12px}
 .note{color:var(--muted);font-size:.95em}
+.rd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;margin:8px 0 24px}
+@media (max-width:760px){.rd-grid{grid-template-columns:1fr}}
+.rd-grid table{width:100%;border-collapse:collapse;font-size:.88em}
+.rd-grid th,.rd-grid td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.rd-grid th{color:var(--muted);font-weight:600;font-size:.85em}
+.rd-grid .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rd-wrap{overflow-x:auto}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:.92em;color:var(--muted)}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 8px;border-bottom:1px solid var(--line)}
 .tabs button{font:inherit;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--muted);cursor:pointer}
@@ -82,6 +89,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 	<button role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
 	<button role="tab" id="t-evolution" aria-controls="evolution" aria-selected="false">Evolution</button>
 	<button role="tab" id="t-status" aria-controls="status" aria-selected="false">Status</button>
+	<button role="tab" id="t-radar" aria-controls="radar" aria-selected="false">Radar</button>
 	<button role="tab" id="t-security" aria-controls="security" aria-selected="false">Security</button>
 	<button role="tab" id="t-versions" aria-controls="versions" aria-selected="false">Versions</button>
 </div>
@@ -99,6 +107,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 	<div class="channel"><div class="head"><img src="img/logo_minds_sketch.png" alt=""><h3>The Minds Sketch</h3></div><div class="nums" data-channel="The Minds Sketch"></div><p>Psychology as a paper collage: torn paper, sticker characters and newsprint clippings explain why we procrastinate, overthink, and how to change it.</p><a href="https://www.youtube.com/@the-minds-sketch">youtube.com/@the-minds-sketch</a></div>
 	<div class="channel"><div class="head"><img src="img/logo_coinwise.png" alt=""><h3>Coinwise Sketch</h3></div><div class="nums" data-channel="Coinwise Sketch"></div><p>Everyday money on an editorial desk: documents, stamps and coin towers, with Nora, Walt, Sam and Leo living each lesson. Inflation, debt, index funds and the tricks that make us spend more than we plan.</p><a href="https://www.youtube.com/@Coinwise-Sketch">youtube.com/@Coinwise-Sketch</a></div>
 	<div class="channel"><div class="head"><img src="img/logo_tiny_streak.png" alt=""><h3>Tiny Streak<span class="tag">new</span></h3></div><div class="nums" data-channel="Tiny Streak"></div><p>Wordless animated short films about building habits and beating the urges that pull us back: a small character, a day counter, one small step at a time. First film: <a href="https://youtu.be/oStvR1ZWPI0">One Page a Day</a>.</p><a href="https://www.youtube.com/@tinystreak">youtube.com/@tinystreak</a></div>
+	<div class="channel"><div class="head"><img src="img/logo_stick_it_out.png" alt=""><h3>Stick It Out<span class="tag">coming soon</span></h3></div><p>Real disasters and real survivals, day by day, told with stickmen. Kit, 12, keeps a notebook of every day while the Hale family lives through a blackout, a heat dome or a flood, with every event grounded in a real, cited case.</p></div>
 </div>
 
 <h2>How the channels look</h2>
@@ -203,6 +212,17 @@ the latest public video on each channel. It is updated automatically from the op
 <p class="note" id="st-updated"></p>
 </section>
 
+<section class="panel" id="radar" role="tabpanel" aria-labelledby="t-radar" hidden>
+<h2>Radar</h2>
+<p>Our own competitor research tool, built on the free YouTube Data API (<code>tools/radar.py</code>). Every day it records the
+subscribers and views of the channels we watch and their latest uploads. An <b>outlier</b> is a video with at least 3×
+the views of its own channel's typical long video, from the last 90 days. That is how we spot what is working in each
+niche, the way paid tools like vidIQ do. Growth appears once there is a week of daily snapshots.</p>
+<div class="stats" id="rd-stats"></div>
+<div id="rd-niches"></div>
+<p class="note" id="rd-updated"></p>
+</section>
+
 <section class="panel" id="security" role="tabpanel" aria-labelledby="t-security" hidden>
 <h2>Security and safety</h2>
 <p>AutoTube runs on one computer owned by its operator. It makes videos for the operator's own channels and nothing else.
@@ -267,7 +287,7 @@ function show(id) {
 	tabs.forEach((t) => { const on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
 }
 tabs.forEach((t) => t.addEventListener('click', () => { show(t.getAttribute('aria-controls')); history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }));
-if (['#how', '#evolution', '#status', '#security', '#versions'].includes(location.hash)) show(location.hash.slice(1));
+if (['#how', '#evolution', '#status', '#radar', '#security', '#versions'].includes(location.hash)) show(location.hash.slice(1));
 // versions tab (versions.json, written by tools/versions.py on every release)
 fetch('versions.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
 	if (!d) return;
@@ -289,6 +309,17 @@ fetch('status.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).th
 	document.getElementById('st-last').innerHTML = d.channels.filter((c) => c.last_upload).map((c) => `<a class="vid" href="${e(c.last_upload.url)}" target="_blank" rel="noopener"><span><small>${e(c.name)} · ${e(c.last_upload.date)}</small>${e(c.last_upload.title)}</span></a>`).join('');
 	document.getElementById('st-updated').textContent = `Updated ${d.updated}.`;
 });
+// radar tab (radar.json, refreshed with the stats by tools/site.py: tools/radar.py export)
+fetch('radar.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
+	if (!d) return;
+	const e = (x) => String(x ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+	const n = (x) => Number(x || 0).toLocaleString();
+	document.getElementById('rd-stats').innerHTML = `<div class="stat"><b>${n(d.channels)}</b><span>channels watched</span></div><div class="stat"><b>${n(d.videos)}</b><span>videos tracked</span></div><div class="stat"><b>${d.niches.length}</b><span>niches</span></div>`;
+	document.getElementById('rd-niches').innerHTML = d.niches.map((x) => `<h3>${e(x.name)} <span class="tag">${x.channels.length} channels</span></h3><div class="rd-grid">
+		<div class="rd-wrap"><table><thead><tr><th>Channel</th><th class="num">Subscribers</th><th class="num">7 days</th></tr></thead><tbody>${x.channels.map((c) => `<tr><td><a href="https://www.youtube.com/channel/${e(c.id)}" target="_blank" rel="noopener">${e(c.title)}</a></td><td class="num">${n(c.subs)}</td><td class="num">${c.subs_7d == null ? '–' : (c.subs_7d >= 0 ? '+' : '') + n(c.subs_7d)}</td></tr>`).join('')}</tbody></table></div>
+		<div class="rd-wrap"><table><thead><tr><th class="num">× median</th><th class="num">Views</th><th>Outlier video</th></tr></thead><tbody>${x.outliers.map((o) => `<tr><td class="num"><b>${o.x}×</b></td><td class="num">${n(o.views)}</td><td><a href="https://youtu.be/${e(o.id)}" target="_blank" rel="noopener">${e(o.title)}</a><br><small class="note">${e(o.channel)} · ${o.age} days old</small></td></tr>`).join('') || '<tr><td colspan="3" class="note">No outliers of 3× or more in the last 90 days.</td></tr>'}</tbody></table></div></div>`).join('');
+	document.getElementById('rd-updated').textContent = `Updated ${d.updated}${d.compared_with ? ` · growth since ${d.compared_with}` : ' · growth appears after a week of snapshots'}.`;
+}).catch(() => {});
 // channel stats (stats.json, refreshed nightly by tools/site.py)
 fetch('stats.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
 	if (!d) return;
