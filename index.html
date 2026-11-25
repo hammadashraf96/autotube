@@ -32,7 +32,8 @@ figcaption b{display:block;color:var(--fg);font-size:1.05em}
 .looks figure img{aspect-ratio:16/9}
 .sheet{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-top:12px}
 .note{color:var(--muted);font-size:.95em}
-.rd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;margin:8px 0 24px}
+.rd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:8px 0 28px}
+.rd-grid h4{margin:10px 0 4px}
 @media (max-width:760px){.rd-grid{grid-template-columns:1fr}}
 .rd-grid table{width:100%;border-collapse:collapse;font-size:.88em}
 .rd-grid th,.rd-grid td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -216,8 +217,8 @@ the latest public video on each channel. It is updated automatically from the op
 <h2>Radar</h2>
 <p>Our own competitor research tool, built on the free YouTube Data API (<code>tools/radar.py</code>). Every day it records the
 subscribers and views of the channels we watch and their latest uploads. An <b>outlier</b> is a video with at least 3×
-the views of its own channel's typical long video, from the last 90 days. That is how we spot what is working in each
-niche, the way paid tools like vidIQ do. Growth appears once there is a week of daily snapshots.</p>
+the views of its own channel's typical long video, from the last 90 days. Each of our niches is shown in two parts: <b>mine</b> (our channel) and <b>competitors</b>,
+with the same numbers side by side. That is how we spot what is working, the way paid tools like vidIQ do. Growth appears once there is a week of daily snapshots.</p>
 <div class="stats" id="rd-stats"></div>
 <div id="rd-niches"></div>
 <p class="note" id="rd-updated"></p>
@@ -309,15 +310,19 @@ fetch('status.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).th
 	document.getElementById('st-last').innerHTML = d.channels.filter((c) => c.last_upload).map((c) => `<a class="vid" href="${e(c.last_upload.url)}" target="_blank" rel="noopener"><span><small>${e(c.name)} · ${e(c.last_upload.date)}</small>${e(c.last_upload.title)}</span></a>`).join('');
 	document.getElementById('st-updated').textContent = `Updated ${d.updated}.`;
 });
-// radar tab (radar.json, refreshed with the stats by tools/site.py: tools/radar.py export)
+// radar tab (radar.json, refreshed with the stats by tools/site.py: tools/radar.py export): mine vs competitors
 fetch('radar.json', {cache: 'no-store'}).then((r) => r.ok ? r.json() : null).then((d) => {
-	if (!d) return;
+	if (!d || !d.groups) return;
 	const e = (x) => String(x ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
-	const n = (x) => Number(x || 0).toLocaleString();
-	document.getElementById('rd-stats').innerHTML = `<div class="stat"><b>${n(d.channels)}</b><span>channels watched</span></div><div class="stat"><b>${n(d.videos)}</b><span>videos tracked</span></div><div class="stat"><b>${d.niches.length}</b><span>niches</span></div>`;
-	document.getElementById('rd-niches').innerHTML = d.niches.map((x) => `<h3>${e(x.name)} <span class="tag">${x.channels.length} channels</span></h3><div class="rd-grid">
-		<div class="rd-wrap"><table><thead><tr><th>Channel</th><th class="num">Subscribers</th><th class="num">7 days</th></tr></thead><tbody>${x.channels.map((c) => `<tr><td><a href="https://www.youtube.com/channel/${e(c.id)}" target="_blank" rel="noopener">${e(c.title)}</a></td><td class="num">${n(c.subs)}</td><td class="num">${c.subs_7d == null ? '–' : (c.subs_7d >= 0 ? '+' : '') + n(c.subs_7d)}</td></tr>`).join('')}</tbody></table></div>
-		<div class="rd-wrap"><table><thead><tr><th class="num">× median</th><th class="num">Views</th><th>Outlier video</th></tr></thead><tbody>${x.outliers.map((o) => `<tr><td class="num"><b>${o.x}×</b></td><td class="num">${n(o.views)}</td><td><a href="https://youtu.be/${e(o.id)}" target="_blank" rel="noopener">${e(o.title)}</a><br><small class="note">${e(o.channel)} · ${o.age} days old</small></td></tr>`).join('') || '<tr><td colspan="3" class="note">No outliers of 3× or more in the last 90 days.</td></tr>'}</tbody></table></div></div>`).join('');
+	const n = (x) => x == null ? '–' : Number(x).toLocaleString(), plus = (x) => x == null ? '–' : (x >= 0 ? '+' : '') + Number(x).toLocaleString();
+	const table = (rows, empty) => rows.length ? `<table><thead><tr><th>Channel</th><th class="num">Subscribers</th><th class="num">7 days</th><th class="num">Median views</th><th class="num">Uploads 30 d</th></tr></thead><tbody>${rows.map((c) => `<tr><td><a href="https://www.youtube.com/channel/${e(c.id)}" target="_blank" rel="noopener">${e(c.title)}</a></td><td class="num">${n(c.subs)}</td><td class="num">${plus(c.subs_7d)}</td><td class="num">${n(c.median_views)}</td><td class="num">${n(c.uploads_30d)}</td></tr>`).join('')}</tbody></table>` : `<p class="note">${empty}</p>`;
+	const outl = (rows) => rows.length ? `<table><thead><tr><th class="num">× median</th><th class="num">Views</th><th>Outlier video</th></tr></thead><tbody>${rows.map((o) => `<tr><td class="num"><b>${o.x}×</b></td><td class="num">${n(o.views)}</td><td><a href="https://youtu.be/${e(o.id)}" target="_blank" rel="noopener">${e(o.title)}</a><br><small class="note">${e(o.channel)} · ${o.age} days old</small></td></tr>`).join('')}</tbody></table>` : '<p class="note">No outliers of 3× or more in the last 90 days.</p>';
+	const vs = (label, p) => `<div class="stat"><b>${n(p[0])} <small style="font-size:.5em;color:var(--muted)">vs</small> ${n(p[1])}</b><span>${label}<br>mine vs competitors' median</span></div>`;
+	document.getElementById('rd-stats').innerHTML = `<div class="stat"><b>${n(d.channels)}</b><span>channels watched</span></div><div class="stat"><b>${n(d.videos)}</b><span>videos tracked</span></div><div class="stat"><b>${d.groups.length}</b><span>of our niches</span></div>`;
+	document.getElementById('rd-niches').innerHTML = d.groups.map((g) => `<h3>${e(g.name)} <span class="tag">${g.competitors.length} competitors</span></h3>
+		<div class="stats">${vs('Subscribers', g.compare.subs)}${vs('Median views per video', g.compare.median_views)}${vs('Uploads in 30 days', g.compare.uploads_30d)}</div>
+		<div class="rd-grid"><div class="rd-wrap"><h4>Mine</h4>${table(g.mine, 'No channel yet.')}<h4>My outliers</h4>${g.mine.length ? outl(g.my_outliers) : '<p class="note">–</p>'}</div>
+		<div class="rd-wrap"><h4>Competitors</h4>${table(g.competitors, 'None watched yet.')}<h4>Competitor outliers</h4>${outl(g.competitor_outliers)}</div></div>`).join('');
 	document.getElementById('rd-updated').textContent = `Updated ${d.updated}${d.compared_with ? ` · growth since ${d.compared_with}` : ' · growth appears after a week of snapshots'}.`;
 }).catch(() => {});
 // channel stats (stats.json, refreshed nightly by tools/site.py)
