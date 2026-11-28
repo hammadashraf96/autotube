@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28 00:57 UTC",
+ "updated": "2026-11-28 04:31 UTC",
  "nights": [
   "2026-11-13",
   "2026-11-14",
@@ -55,9 +55,9 @@
     false
    ],
    "last_upload": {
-    "date": "2026-11-25",
-    "title": "The Psychology of Charisma: Why Some People Light Up a Room (and How to Learn It)",
-    "url": "https://youtu.be/ktvOtF-Tg8U"
+    "date": "2026-11-27",
+    "title": "The Psychology of Motivation: Why It Fades and How to Keep Going",
+    "url": "https://youtu.be/gIJIo4J6Ljw"
    }
   },
   {
@@ -81,9 +81,9 @@
     false
    ],
    "last_upload": {
-    "date": "2026-11-25",
-    "title": "How the Stock Market Works: What You Actually Own When You Buy a Share \u00b7 The Share",
-    "url": "https://youtu.be/ZQdzX7XIDo8"
+    "date": "2026-11-27",
+    "title": "How Bonds Work: Lending Your Money and Why Prices Move \u00b7 The Bond",
+    "url": "https://youtu.be/LnQ3CkKK5MI"
    }
   },
   {
@@ -107,14 +107,14 @@
     false
    ],
    "last_upload": {
-    "date": "2026-11-25",
-    "title": "One Line a Night | A Tiny Streak Film",
-    "url": "https://youtu.be/R6e-ImdWeE0"
+    "date": "2026-11-27",
+    "title": "Twelve Small Hellos | A Tiny Streak Film",
+    "url": "https://youtu.be/1uDLfMf_MgY"
    }
   }
  ],
  "checks": {
-  "last_run": "2026-11-25",
+  "last_run": "2026-11-27",
   "disk": "OK",
   "security": "OK"
  }
