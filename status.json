@@ -1,8 +1,6 @@
 {
- "updated": "2026-11-25 23:41 UTC",
+ "updated": "2026-11-28 00:57 UTC",
  "nights": [
-  "2026-11-11",
-  "2026-11-12",
   "2026-11-13",
   "2026-11-14",
   "2026-11-15",
@@ -14,13 +12,13 @@
   "2026-11-21",
   "2026-11-22",
   "2026-11-23",
-  "2026-11-24"
+  "2026-11-24",
+  "2026-11-25",
+  "2026-11-26"
  ],
  "ran": [
   true,
   true,
-  true,
-  true,
   false,
   false,
   true,
@@ -30,9 +28,11 @@
   false,
   false,
   true,
-  true
+  true,
+  true,
+  false
  ],
- "uptime_pct": 64,
+ "uptime_pct": 57,
  "channels": [
   {
    "name": "The Minds Sketch",
@@ -40,8 +40,6 @@
    "status": "active",
    "nights": [
     true,
-    false,
-    true,
     true,
     false,
     false,
@@ -52,7 +50,9 @@
     false,
     false,
     true,
-    true
+    true,
+    false,
+    false
    ],
    "last_upload": {
     "date": "2026-11-25",
@@ -67,8 +67,6 @@
    "nights": [
     true,
     false,
-    true,
-    false,
     false,
     false,
     true,
@@ -78,7 +76,9 @@
     false,
     false,
     true,
-    true
+    true,
+    false,
+    false
    ],
    "last_upload": {
     "date": "2026-11-25",
@@ -91,8 +91,6 @@
    "handle": "@tinystreak",
    "status": "active",
    "nights": [
-    false,
-    false,
     true,
     true,
     false,
@@ -102,6 +100,8 @@
     true,
     false,
     false,
+    false,
+    true,
     false,
     true,
     false
